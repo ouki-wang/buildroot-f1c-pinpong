@@ -3,11 +3,11 @@
 如有侵权，请联系作者
 
 # 改动
-*1. USB弹出RNDIS设备，默认地址10.0.3.1，PC机通过DHCP获取IP：10.0.3.2
-*2. 支持mDNS，默认地址 pythoniot.local
-*3. 内置pinpong库，用户可以通过pinpong控制gpio iic spi pwm uart 以及多种传感器
-*4. 支持UBIFS文件系统，更节省SPI-NAND空间
-*5. 内置了WEBSSH，用户可以通过WEB浏览器进入SSH终端
+ -  USB弹出RNDIS设备，默认地址10.0.3.1，PC机通过DHCP获取IP：10.0.3.2
+ -  支持mDNS，默认地址 pythoniot.local
+ -  内置pinpong库，用户可以通过pinpong控制gpio iic spi pwm uart 以及多种传感器
+ -  支持UBIFS文件系统，更节省SPI-NAND空间
+ -  内置了WEBSSH，用户可以通过WEB浏览器进入SSH终端
 
 # Buildroot Package for Allwinner SIPs
 Opensource development package for Allwinner F1C100s & F1C200s
