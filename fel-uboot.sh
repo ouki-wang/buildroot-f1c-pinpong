@@ -1,0 +1,1 @@
+board/allwinner/utils/fel-uboot.sh

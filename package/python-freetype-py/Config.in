@@ -1,0 +1,3 @@
+config BR2_PACKAGE_PYTHON_FREETYPE_PY
+	bool "python-freetype-py"
+	depends on BR2_PACKAGE_PYTHON_SETUPTOOLS_SCM

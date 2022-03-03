@@ -1,0 +1,1 @@
+board/allwinner/utils/rebuild-uboot.sh

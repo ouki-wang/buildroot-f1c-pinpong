@@ -1,0 +1,1 @@
+board/allwinner/utils/flash-mmc-all.sh

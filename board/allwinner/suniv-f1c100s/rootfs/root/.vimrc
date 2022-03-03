@@ -1,0 +1,13 @@
+syntax on
+set ts=4
+set sts=4
+set sw=4
+set hlsearch
+set ruler
+set backspace=indent,eol,start
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,gb2312,utf-16,big5
+set fenc=utf-8
+set fencs=utf-8,gb2312
+set autoindent
+set expandtab

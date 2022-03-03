@@ -1,0 +1,1 @@
+board/allwinner/utils/dfu-mmc-all.sh

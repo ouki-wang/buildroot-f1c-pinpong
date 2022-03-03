@@ -1,0 +1,1 @@
+board/allwinner/utils/dfu-nand-all.sh

@@ -1,0 +1,5 @@
+# md5 from https://pypi.python.org/pypi/freetype-py/json
+md5     8d3f7b2dd10035181040ce628a352fc8 freetype-py-2.1.0.tar.gz
+# Locally computed
+sha256  d9145d4502be26b757c2e3209bc705c957885787edf6ce28661a7d559ffc466f  freetype-py-2.1.0.tar.gz
+sha256  de177fb928a0eed8d209fddbfa3861379e08b3b41f34ad17a329c2f78199371d  LICENSE

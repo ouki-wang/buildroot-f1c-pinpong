@@ -1,0 +1,272 @@
+{
+"BOARD":
+{
+	"import":"from pinpong.board import Board",
+	"api":"Board(boardname, port)\n  @boardname   主板名称，当前支持uno leonardo mega2560 microbit\n  @port        串口名字，不填写系统会自动选择合适的端口\nget_i2c_master(bus_num) : 获取I2C主机控制器\n  @bus_num     I2C主机控制器编号"
+},
+
+"PIN":
+{
+	"import":"from pinpong.board import Board,Pin",
+	"api":"Pin(board, pin, mode)\n  @board 使用Board类构造出来的主板\n  @pin   Pin.D0-Pin.Dx 或 Pin.A0-Pin.Ax\n  @mode  Pin.IN Pin.OUT Pin.PULL_UP Pin.PULL_DOWN\nvalue(v): 设置或读取引脚电平\n  @v:    0 输出低电平，1 输出高电平\n         不传值  输入模式下读取引脚电平\non(): 输出高电平\noff(): 输出低电平\nirq(trigger, handler):将引脚设置为中断模式\n  @trigger   IRQ_RISING 上升沿触发 IRQ_FALLING 下降沿触发\n  @handler   中断被触发后的回调函数"
+},
+
+"SERVO":
+{
+	"import":"from pinpong.board import Board,Pin\nfrom pinpong.libs.servo import Servo",
+	"api":"Servo(board, pin_obj)\n  @board     使用Board类构造出来的主板\n  @pin_obj   使用Pin类构造出来的对象，舵机连接到引脚\nangle(value): 舵机转动角度\n  @value     舵机转动的角度，范围(0-180)\n"
+},
+
+"LCD1602_I2C":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.lcd1602 import LCD1602_I2C",
+	"api":"LCD1602_I2C(board, i2c_addr)\n  @board 使用Board类构造出来的主板\n  @i2c_addr   液晶的i2c地址\nclear(): 清屏\nbacklight(on): 打开关闭背光\n  @on True 打开背光  False 关闭背光\ndisplay(on):   打开关闭显示\n  @on True 打开显示  False 关闭显示\nset_cursor(x, y): 设置光标位置\n  @x 光标的x坐标\n  @y 光标的y坐标\nprint(s): 在液晶上显示内容\n  @s 显示的内容，可以是字符串，数字等格式\nscroll_left():向左滚屏一个字符宽度\nscroll_right():向右滚屏一个字符宽度"
+},
+
+"MLX90614":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_mlx90614 import MLX90614",
+	"api":"MLX90614(board, i2c_addr)\n  @board      使用Board类构造出来的主板\n  @i2c_addr   传感器的i2c地址，如果不传入，默认是0x5A\n\nobj_temp_c(): 获取目标温度，单位为摄氏度\nenv_temp_c(): 获取环境温度，单位为摄氏度\nobj_temp_f(): 获取目标温度，单位为华氏度\nenv_temp_f(): 获取环境温度，单位为华氏度"
+},
+
+"TCS34725":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_tcs34725 import TCS34725",
+	"api":"TCS34725(board)\n  @board   使用Board类构造出来的主板\nbegin(): 初始化传感器\n  返回值   True 初始化成功  False 初始化失败\nget_rgbc(): 获取目标的r,g,b,c值\n  返回值   由(r,g,b,c)组成的tuple"
+},
+
+"URM09":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_urm09 import URM09",
+	"api":"URM09(board, pin_obj)\n  @board 使用Board类构造出来的主板\n  @i2c_addr   传感器的i2c地址，如果不传入，默认是0x11\ntemp_c(): 获取温度，单位为摄氏度\ndistance_cm(): 获取距离，单位为厘米"
+},
+
+"DHT11":
+{
+	"import":"from pinpong.board import Board,Pin,DHT11",
+	"api":"DHT11(board, pin_obj)\n  @board     使用Board类构造出来的主板\n  @pin_obj   使用Pin类构造出来的对象, 连接DHT11的引脚\ntemp_c(): 获取温度值，单位为摄氏度\nhumidity(): 相对湿度值，范围0-100"
+},
+
+"DHT22":
+{
+	"import":"from pinpong.board import Board,Pin,DHT22",
+	"api":"DHT22(board, pin_obj)\n  @board 使用Board类构造出来的主板\n  @pin_obj 使用Pin类构造出来的对象, 连接DHT22的引脚\ntemp_c(): 获取温度值，单位为摄氏度\nhumidity(): 相对湿度值，范围0-100"
+},
+
+"NEOPIXEL":
+{
+	"import":"from pinpong.board import Board,Pin,NeoPixel",
+	"api":"NeoPixel(board, pin_obj, num)\n  @board     使用Board类构造出来的主板\n  @pin_obj   使用Pin类构造出来的对象, 连接灯带的引脚, 可使用Pin.D0-Dx或Pin.A0-Pin.Ax\n  @num       连接的灯珠数量\n[](i,v): 设置灯珠颜色，用法 np[i]=v\n  @i:    灯珠编号，从0开始\n  @v:    颜色值，tuple类型(r,g,b) r,g,b取值范围0-255"
+},
+
+"SR04_URM10":
+{
+	"import":"from pinpong.board import Board,Pin,SR04_URM10",
+	"api":"SR04_URM10(board, trigger_pin_obj, echo_pin_obj)\n  @board             使用Board类构造出来的主板\n  @trigger_pin_obj   使用Pin类构造出来的对象, 触发测量引脚\n  @echo_pin_obj      使用Pin类构造出来的对象, 接收反馈引脚\ndistance_cm(): 读取超声波距离，单位为厘米"
+},
+
+"RGB1602":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.rgb1602 import RGB1602",
+	"api":"RGB1602(board, i2c_addr)\n  @board      使用Board类构造出来的主板\n  @i2c_addr   液晶的i2c地址\nclear(): 清屏\nset_rgb(r, g, b):设置背光颜色\n  @r   背光r分量值\n  @g   背光g分量值\n  @b   背光b分量值\nbacklight(on): 打开关闭背光\n  @on  True 打开背光  False 关闭背光\ndisplay(on):   打开关闭显示\n  @on  True 打开显示  False 关闭显示\nset_cursor(x, y): 设置光标位置\n  @x   光标的x坐标\n  @y   光标的y坐标\nprint(s): 在液晶上显示内容\n  @s   显示的内容，可以是字符串，数字等格式\nscroll_left():向左滚屏一个字符宽度\nscroll_right():向右滚屏一个字符宽度"
+},
+
+"TONE":
+{
+	"import":"from pinpong.board import Board,Pin,Tone",
+	"api":"Tone(board, pin_obj)\n  @board 使用Board类构造出来的主板\n  @pin_obj   使用Pin类构造出来的对象, 发出声音的引脚\non():  打开声音\noff(): 关闭声音\nfreq(v): 设置或获得声音频率\n  @v        用户设置的频率值\n            不传值  返回当前频率\ntone(freq, duration)：播放特定频率固定时间\n  @freq     播放的频率\n  @duration 播放的时间长度，单位为毫秒，0表示永远播放"
+},
+
+"SOFTSPI":
+{
+	"import":"from pinpong.board import Board,Pin,SoftSPI",
+	"api":"SoftSPI(self, board, baudrate, polarity, phase, bits, sck, mosi, miso)\n  @board      使用Board类构造出来的主板\n  @baudrate   使用Pin类构造出来的对象\n  @polarity   空闲时clk引脚的电平\n  @phase      SPI在SCLK第几个边沿开始采样（0:第一个边沿开始; 1:第二个边沿开始）\n  @bits       默认传输8 bits，不可更改\n  @sck        Pin对象，时钟引脚\n  @mosi       Pin对象，数据输出引脚\n  @miso       Pin对象，数据输入引脚\n\nread(num, default_value=0xff): 读取num个数据\n  @num:           读取的数据字节数\n  @default_value  读过过程中发送过去的值，不填写默认发送0xff\nreadinto(buf): 从spi总线读取数据到buf中\n  @buf:           bytearray格式的缓冲，读取数据字节长度为buf的长度\nwrite(buf): 将buf中的数据写入到spi总线\nwrite_readinto(wbuf, rbuf): 将wbuf中的数据写入spi总线，同时从spi总线读取数据到rbuf，两个buf长度相等\n  @wbuf           bytearray格式的缓冲，写入wbuf的长度的数据字节\n  @rbuf           bytearray格式的缓冲，读取rbuf的长度的数据字节"
+},
+
+"PWM":
+{
+	"import":"from pinpong.board import Board,Pin,PWM",
+	"api":"PWM(board, pin_obj)\n  @board    使用Board类构造出来的主板\n  @pin_obj  使用Pin类构造出来的对象\nfreq(v): 设置pwm频率\n  @v:       用户设置的频率值\n            不传值  返回当前频率\nduty(v): 设置pwm占空比\n  @v:        用户设置的占空比 范围 0-100\n             不传值  返回当前占空比\ndeinit(): 取消次引脚PWM功能"
+},
+
+"ADC":
+{
+	"import":"from pinpong.board import Board,Pin,ADC",
+	"api":"ADC(board, pin_obj)\n  @board     使用Board类构造出来的主板\n  @pin_obj   使用Pin类构造出来的对象,只能使用Pin.A0-Pin.Ax\nread(): 读取引脚电平，范围（0-1024）"
+},
+
+"I2C":
+{
+	"import":"from pinpong.board import Board,I2C",
+	"api":"I2C()\n  @board 使用Board类构造出来的主板\n  @scan():获取I2C地址\n  @writeto(i2c_addr,value):I2C地址写入数据  i2c_addr:I2C地址  value:数据\n  @readfrom(i2c_addr,value):从I2C读取数据  i2c_addr:I2C地址  value:数据\n  @readfrom_mem(i2c_addr,value): 从I2C读取数据  i2c_addr:I2C地址  value:数据\n  @writeto_mem(i2c_addr,value):  I2C地址写入数据  i2c_addr:I2C地址  value:数据"
+},
+
+"IR":
+{
+	"import":"from pinpong.board import Board,IRRecv,Pin",
+	"api":"IRRecv(Pin(Pin.D2))\n  @board 使用Board类构造出来的主板\n  @Pin  Pin类，Pin.D2是引脚\n  @read():获取红外的值\n"
+},
+
+"DS1307":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ds1307 import DS1307",
+	"api":"DS1307()  构建对象\n  @board 使用Board类构造出来的主板\n  @set_time():设置时间\n  @get_time():获取时间\n  @set_output():SQW/OUT引脚设置高电平、低电平、方波输出功能\n"
+},
+
+"PAJ7620U2":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_paj7620u2 import PAJ7620U2,Gesture",
+	"api":"PAJ7620U2()  构建对象\n  @board 使用Board类构造出来的主板\n  @set_gesture_high/low_rate():设置高速或低速模式\n  @get_gesture():获取手势描述和手势代号\n"
+},
+
+"BNO055":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bno055 import BNO055",
+	"api":"BNO055()  构建对象\n  @board 使用Board类构造出来的主板\n  @begin():传感器开始，成功返回True\n  @get_axis_acc():获取加速度\n  @get_axis_mag():获取磁力加速度\n  @get_axis_gyr():获取陀螺仪数据\n  @get_axis_lia():获取线性加速度\n  @get_axis_grv():获取重力向量\n  @get_eul():获取欧拉角\n  @get_qua():获取四元素\n"
+},
+
+"BMP280":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bmp280 import BMP280",
+	"api":"BMP280()  构建对象\n  @board 使用Board类构造出来的主板\n  @begin():传感器开始，成功返回True\n  @temp_c():获取温度值数据\n  @pressure_p():获取压强数据\n  @altitude_m():获取海拔数据\n  "
+},
+
+"PN532":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_pn532 import PN532",
+	"api":"PN532()  构建对象\n  @board 使用Board类构造出来的主板\n  @begin():传感器开始，成功返回True\n  @get_information():获取卡片信息\n  @read_data():获取存储器数据\n  @write_data():向存储器写入数据\n  "
+},
+
+"DS18B20":
+{
+	"import":"from pinpong.board import Board,Pin,DS18B20",
+	"api":"DS18B20(Pin(Pin.D12))  构建对象\n  @board 使用Board类构造出来的主板\n  @Pin():Pin对象，Pin.D12引脚\n  @temp_c():获取温度值\n  "
+},
+
+"HX711":
+{
+	"import":"from pinpong.board import Board,Pin,HX711",
+	"api":"HX711(dout_pin, sck_pin, scale)  构建对象  dout_pin 引脚  sck_pin 引脚  scale 校验值\n  @board 使用Board类构造出来的主板\n  @read_weight():获取物体的重量值\n  "
+},
+
+"TDS":
+{
+	"import":"from pinpong.board import Board,Pin\nfrom pinpong.libs.dfrobot_TDS import TDS",
+	"api":"TDS(Pin.A2)  构建对象  dout_pin 引脚  Pin.A2 引脚\n  @board 使用Board类构造出来的主板\n  @get_value():获取水质的值\n  "
+},
+
+"HEARTRATE":
+{
+	"import":"from pinpong.board import Board,Pin\nfrom pinpong.libs.dfrobot_heartrate import HEARTRATE",
+	"api":"HEARTRATE(DIGITAL_MODE或者ANALOG_MODE, Pin.A1)  构建对象  DIGITAL_MODE或者ANALOG_MODE 模式  Pin.A1 模拟引脚\n  @board 使用Board类构造出来的主板\n  "
+},
+
+"BME280":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bme280 import BME280",
+	"api":"BME280()  构建对象\n  @board 使用Board类构造出来的主板\n  @temp_c():获取温度的值\n  @press_pa():获取压强的值\n  @cal_altitudu():获取海拔的值\n  @humidity():获取湿度的值\n"
+},
+
+"VL53L0":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_vl53l0 import VL53L0",
+	"api":"VL53L0()  构建对象\n  @board 使用Board类构造出来的主板\n  @get_distance_mm():获取距离值\n  "
+},
+
+"LIS2DH":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_lis2dh import LIS2DH",
+	"api":"lis=LIS2DH()  构建对象\n  @board 使用Board类构造出来的主板\n  @init(lis.LIS2DH12_RANGE_8GA):初始化  lis.LIS2DH12_RANGE_8GA 配置范围\n  @read_XYZ():获取XYZ的值\n  "
+},
+
+"BMP388":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bmp388 import BMP388",
+	"api":"BMP388()  构建对象\n  @board 使用Board类构造出来的主板\n  @cal_altitude_m():获取海拔高度  \n  @pressure_pa():获取压强的值\n  @temp_C():获取温度的值\n"
+},
+
+"INA219":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ina219 import INA219",
+	"api":"INA219(i2c_addr=0x45)  构建对象  i2c_addr IIC地址\n  @board 使用Board类构造出来的主板\n  @get_bus_voltage_mv():相对GND电压  \n  @get_shunt_voltage_mv():IN+相对IN-的两端电压，即采样电阻两端电压\n @get_current_ma():流经IN+和IN-的电流\n  @get_power_mw():功率\n  "
+},
+
+"CCS811":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ccs811 import CCS811, CCS811_Ecycle, CCS811_Emode",
+	"api":"CCS811()  构建对象\n  @board 使用Board类构造出来的主板\n  @check_data_ready():检查是否有数据可读  \n  @CO2_PPM():读取CO2的值\n  @TVOC_PPB():读取TVOC的值\n  @read_baseline():读取基准线的值\n"
+},
+
+"ADS1115":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ADS1115 import ADS1115",
+	"api":"ADS1115()  构建对象\n  @board 使用Board类构造出来的主板\n  @read_voltage(0):读取通道0的模拟值  \n  @comparator_voltage('01'):比较通道01的电压\n  "
+},
+
+"HUSKYLENS":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_huskylens import Huskylens",
+	"api":"Huskylens()  构建对象\n  @board 使用Board类构造出来的主板\n  @command_request():获取huskylens画面方框或箭头数据\n  @command_request_custom_text():显示文字\n  @command_request_customnames():自定义已学习ID名字\n  @command_request_forget():遗忘当前算法所有数据\n  @command_request_load_model_from_SD_card():加载（保存）模型\n  @command_request_learn_once():哈士奇自动学习一次\n  @command_request_photo():哈士奇拍照保存到SD卡\n  @command_request_screenshot():哈士奇截图保存到SD卡\n  @command_request_algorthim():哈士奇切换算法\n"
+},
+
+"BME680":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bme680 import DFRobot_BME680",
+	"api":"DFRobot_BME680()  构建对象\n  @board 使用Board类构造出来的主板\n  @get_sensor_data():获取数据, 然后如果返回的不是空，可通过下列打印数据(sensor为构建的对象)：\n  sensor.data.temperature打印温度\n  sensor.data.pressure打印压强\n  sensor.data.humidity打印湿度\n  sensor.data.altitudu打印海拔\n  sensor.data.gas_resistance打印气体阻值\n"
+},
+
+"MAX17043":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_max17043 import MAX17043",
+	"api":"MAX17043()  构建对象\n  @board 使用Board类构造出来的主板\n  @begin():初始化  \n  @read_voltage():读取电压值\n  @read_percentage():读取电压百分比值\n  "
+},
+
+"MCP4725":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_mcp4725 import MCP472",
+	"api":"MCP4725()  构建对象\n  @board 使用Board类构造出来的主板\n  @init():初始化  \n  @output_Sin():正弦波模拟电压输出\n  @output_triangle():三角波模拟电压输出\n  @output_voltage():校准与可调模拟电压输出\n  @output_voltage_EEPROM():将DAC值存入EEPROM\n  "
+},
+
+"BMI160":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_bmi160 import BMI160",
+	"api":"BMI160()  构建对象\n  @board 使用Board类构造出来的主板\n  @begin():初始化计步或者测量加速度陀螺仪  \n  @getAccX():获取加速度x\n  @getGyrX():获取加速度y\n  @getGyrX():获取加速度z\n  @getGyrX():获取陀螺仪x\n  @getGyrY():获取陀螺仪y\n  @getGyrZ():获取陀螺仪z\n  @get_step():返回计步的值\n  "
+},
+
+"PANEL":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_RGBpanel import RGBpanel",
+	"api":"RGBpanel()  构建对象\n  @board 使用Board类构造出来的主板\n  @clear():清除表情  \n  @display():显示第x个表情, 颜色\n  @scroll():设置往左滚动\n  @print():设置显示的字符\n  @pixel():x,y坐标显示, 显示颜色\n  @fillScreen():屏幕全部显示xx颜色\n  "
+},
+
+"DS0469":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ds0469 import DS0469",
+	"api":"DS0469()  构建对象\n  @board 使用Board类构造出来的主板\n  @adjust_aotu():自动调整时间  \n  @adjust_rtc():设置时间，年月日星期时分秒\n  "
+},
+
+"TM1650":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_tm1650 import TM1650",
+	"api":"TM1650()  构建对象\n  @board 使用Board类构造出来的主板\n  @display_string():四位数码管显示字符串xxxx  \n  @clear():四位数码管清屏\n  @set_Dot():四位数码管点亮或熄灭第几位小数点\n  "
+},
+
+"SHT31":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_sht31 import SHT31",
+	"api":"SHT31()  构建对象\n  @board 使用Board类构造出来的主板\n  @temp_c():获取温度值摄氏度  \n  @temp_f():获取温度值华氏度\n  @humidity():获取湿度\n  "
+},
+
+"OZONE":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_Ozone import Ozone",
+	"api":"Ozone()  构建对象\n  @board 使用Board类构造出来的主板\n  @set_mode():设置模式，主动模式或者被动模式  \n  @read_Ozone_data():读取的臭氧值\n  "
+},
+
+"ID809":
+{
+	"import":"from pinpong.board import Board\nfrom pinpong.libs.dfrobot_ID809 import ID809",
+	"api":"ID809()  构建对象\n  @board 使用Board类构造出来的主板\n  @isConnected():查看指纹模块是否连接  \n  @get_deviceID():获取模块ID  \n  @set_security_level():设置安全等级\n  @get_security_level():获取安全等级\n  @get_baudrate():获取模块波特,IIC波特率只能为115200\n  @get_self_learn():获取模块自学功能知否开启\n  @get_enroll_count():读取模块内已注册的指纹数量\n  @get_broken_quantity():获取指纹损坏数量\n  @get_brokenID():获取第一个损坏的ID\n  @get_emptyID():获取一个未注册的ID号\n  @collection_fingerprint():采集指纹\n  @ctrlLED():设置指纹灯环颜色\n  @store_fingerprint():将指纹信息保存到一个未注册的编号中\n  @search():将采集到的指纹与指定编号指纹对比,成功返回指纹编号(1-80)，失败返回0\n  @del_fingerprint():删除要删除得ID\n  "
+}
+
+}
