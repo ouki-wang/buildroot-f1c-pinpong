@@ -131,7 +131,7 @@
 			resets = <&ccu RST_BUS_SPI0>;
 			status = "disabled";
 			pinctrl-names = "default";
-			pinctrl-0 = <&spi0_pins>;
+			pinctrl-0 = <&spi0_pc_pins>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 		};
@@ -145,6 +145,8 @@
 			clock-names = "ahb", "mod";
 			resets = <&ccu RST_BUS_SPI1>;
 			status = "disabled";
+			pinctrl-names = "default";
+			pinctrl-0 = <&spi1_pe_pins>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 		};
@@ -329,15 +331,27 @@
 				function = "uart0";
 			};
 
-			spi0_pins: spi0-pins {
+			uart1_pa_pins: uart1-pa-pins {
+				pins = "PA2", "PA3";
+				function = "uart1";
+				bias-pull-up;
+			};
+			
+			uart2_pd_pins: uart2-pd-pins {
+				pins = "PD13", "PD14";
+				function = "uart2";
+				bias-pull-up;
+			};
+
+			spi0_pc_pins: spi0-pc-pins {
 				pins = "PC0", "PC1", "PC2", "PC3";
 				function = "spi0";
 			};
 
-                        spi1_pins_a: spi1-pins-pc {
-                                pins = "PE9", "PE7", "PE10", "PE8";
-                                function = "spi1";
-                        };
+			spi1_pe_pins: spi1-pe-pins {
+				pins = "PE7", "PE8", "PE9", "PE10";
+				function = "spi1";
+			};
 
 			mmc0_pins: mmc0-pins {
 				pins = "PF0", "PF1", "PF2", "PF3", "PF4", "PF5";
@@ -366,12 +380,6 @@
 			i2c1_pd_pins: i2c1-pd-pins {
 				pins = "PD5", "PD6";
 				function = "i2c1";
-			};
-
-			uart1_pa_pins: uart1-pins {
-				pins = "PA2", "PA3";
-				function = "uart1";
-				bias-pull-up;
 			};
 
 			csi0_pins: csi0-pins {
@@ -527,6 +535,8 @@
 			interrupts = <8>;
 			clocks = <&ccu CLK_BUS_I2C1>;
 			resets = <&ccu RST_BUS_I2C1>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c1_pd_pins>;
 			status = "disabled";
 			#address-cells = <1>;
 			#size-cells = <0>;
