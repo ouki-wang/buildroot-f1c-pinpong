@@ -38,6 +38,17 @@
 
 &spi1 {
 	status = "okay";
+        esp8089@0 {
+            status = "okay";
+            compatible = "boss,esp8089";
+            spi-cpol;
+            spi-cpha;
+            reg = <0>;
+            spi-max-frequency = <30000000>;
+            reset= <134>; //PE6
+            interrupt= <139>; //PE11
+            debug= <0>;
+        };
 };
 
 
