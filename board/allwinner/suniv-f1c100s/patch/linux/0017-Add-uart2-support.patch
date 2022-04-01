@@ -1,0 +1,12 @@
+diff -urN a/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c b/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c
+--- a/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c	2022-04-01 12:13:02.998126228 +0800
++++ b/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c	2022-04-01 12:11:56.902655657 +0800
+@@ -204,7 +204,7 @@
+ 		  SUNXI_FUNCTION(0x0, "gpio_in"),
+ 		  SUNXI_FUNCTION(0x1, "gpio_out"),
+ 		  SUNXI_FUNCTION(0x2, "lcd"),		/* D20 */
+-		  SUNXI_FUNCTION(0x3, "lvds1"),		/* RX */
++		  SUNXI_FUNCTION(0x3, "uart2"),		/* RX */
+ 		  SUNXI_FUNCTION_IRQ_BANK(0x6, 0, 14)),
+ 	SUNXI_PIN(SUNXI_PINCTRL_PIN(D, 15),
+ 		  SUNXI_FUNCTION(0x0, "gpio_in"),
