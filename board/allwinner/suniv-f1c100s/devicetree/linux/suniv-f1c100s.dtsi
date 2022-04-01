@@ -326,6 +326,16 @@
 			#interrupt-cells = <3>;
 			#gpio-cells = <3>;
 
+			pwm0_pins: pwm0 {
+					pins = "PE12";
+					function = "pwm0";
+			};
+			
+			pwm1_pins: pwm1 {
+					pins = "PE6";
+					function = "pwm1";
+			};
+
 			uart0_pe_pins: uart0-pe-pins {
 				pins = "PE0", "PE1";
 				function = "uart0";
@@ -423,7 +433,7 @@
 
 		pwm: pwm@1c21000 {
 			compatible = "allwinner,sun7i-a20-pwm";
-			reg = <0x01c21000 0xc>;
+			reg = <0x01c21000 0x400>;
 			clocks = <&osc24M>;
 			#pwm-cells = <3>;
 			status = "disabled";

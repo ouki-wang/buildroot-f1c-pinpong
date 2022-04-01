@@ -109,12 +109,14 @@
 &i2c0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c0_pd_pins>;
+	clock-frequency = <100000>;
 	status = "okay";
 };
 
 &i2c1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c1_pd_pins>;
+	clock-frequency = <100000>;
 	status = "okay";
 };
 
@@ -123,5 +125,7 @@
 };
 
 &pwm {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pwm0_pins>,<&pwm1_pins>;
 	status = "okay";
 };
