@@ -58,7 +58,7 @@ BR2_TARGET_ROOTFS_SQUASHFS4_GZIP=y
 BR2_PACKAGE_HOST_DOSFSTOOLS=y
 BR2_PACKAGE_HOST_GENIMAGE=y
 BR2_PACKAGE_HOST_MTOOLS=y
-BR2_ROOTFS_OVERLAY="board/allwinner/suniv-f1c100s/rootfs board/widora/mangopi/r3/rootfs"
+BR2_ROOTFS_OVERLAY="board/allwinner/suniv-f1c100s/rootfs board/pythoniot/r1/rootfs"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="board/allwinner/suniv-f1c100s/scripts/genimage.sh"
 BR2_ROOTFS_POST_SCRIPT_ARGS="${BR2_TARGET_UBOOT_SPL_NAME}"
 

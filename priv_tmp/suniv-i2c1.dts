@@ -1,0 +1,14 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,suniv-f1c100s";
+
+	fragment@0 {
+		target-path = "/soc/i2c@1c27400";
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+};
+
