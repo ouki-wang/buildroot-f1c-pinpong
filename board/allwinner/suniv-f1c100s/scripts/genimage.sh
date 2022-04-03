@@ -8,6 +8,12 @@ SELFDIR=`dirname \`realpath ${0}\``
     exit 1
 }
 
+mkimage -C none -A arm -T script -d ${SELFDIR}/../boot.cmd ${SELFDIR}/../boot.scr
+cp ${SELFDIR}/../boot.scr ${1}/
+cp ${SELFDIR}/../uEnv.txt ${1}/
+mkdir ${1}/overlays
+cp ${SELFDIR}/../overlays/*.dtbo ${1}/overlays/
+
 ${SELFDIR}/mknanduboot.sh ${1}/${2} ${1}/u-boot-sunxi-with-nand-spl.bin
 support/scripts/genimage.sh ${1} -c board/allwinner/suniv-f1c100s/genimage-sdcard.cfg
 support/scripts/genimage.sh ${1} -c board/allwinner/suniv-f1c100s/genimage-nor.cfg
