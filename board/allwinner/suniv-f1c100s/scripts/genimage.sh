@@ -11,7 +11,11 @@ SELFDIR=`dirname \`realpath ${0}\``
 mkimage -C none -A arm -T script -d ${SELFDIR}/../boot.cmd ${SELFDIR}/../boot.scr
 cp ${SELFDIR}/../boot.scr ${1}/
 cp ${SELFDIR}/../uEnv.txt ${1}/
-mkdir ${1}/overlays
+
+if [ ! -d ${1}/overlays ];then
+	mkdir ${1}/overlays
+fi
+
 cp ${SELFDIR}/../overlays/*.dtbo ${1}/overlays/
 
 ${SELFDIR}/mknanduboot.sh ${1}/${2} ${1}/u-boot-sunxi-with-nand-spl.bin
