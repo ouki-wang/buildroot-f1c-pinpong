@@ -8,6 +8,6 @@ from pinpong.board import Board,I2C
 
 Board("F1C").begin()
 
-iic=I2C()
+iic=I2C(bus_num=1)
 ret=iic.scan()
 print(ret)

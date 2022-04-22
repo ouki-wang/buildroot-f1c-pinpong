@@ -7,8 +7,8 @@ import time
 from pinpong.board import Board,Pin
 
 Board("F1C").begin()
-#135-PE7  136-PE8 137-PE9 138-PE10 不可用
-led = Pin(12, Pin.OUT) #RPi引脚初始化为电平输出
+
+led = Pin(42, Pin.OUT) #PythonIot引脚初始化为电平输出
 
 while True:
   led.value(1) #输出高电平

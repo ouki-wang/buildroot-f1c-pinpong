@@ -7,9 +7,9 @@ import time
 from pinpong.board import Board
 from pinpong.libs.dfrobot_ssd1306 import SSD1306_I2C #导入ssd1306库
 
-Board("RPi").begin()  #初始化，选择板型和端口号，不输入端口号则进行自动识别
+Board("F1C").begin()  #初始化，选择板型和端口号，不输入端口号则进行自动识别
 
-oled=SSD1306_I2C(width=128, height=64) #初始化屏幕，传入屏幕像素点数
+oled=SSD1306_I2C(width=128, height=64, bus_num=1) #初始化屏幕，传入屏幕像素点数
 #kerning  字间距，0为系统默认值 其他值为自定义间距，单位为像素
 #rowledge 行距，默认为0，单位为像素
 #oled.set_font(font="msyh", width = 15, height = 15, kerning = 0, rowledge = 0)

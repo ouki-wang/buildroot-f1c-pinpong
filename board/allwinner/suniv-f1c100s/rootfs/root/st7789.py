@@ -9,7 +9,7 @@ Board("F1C").begin()
 
 dc = Pin(pin=5, mode=Pin.OUT)
 res = Pin(pin=4, mode=Pin.OUT)
-lcd = ST7789_SPI(width=240, height=240, bus_num=1,device_num=0, dc=dc, res=res) #初始化屏幕
+lcd = ST7789_SPI(width=240, height=240, bus_num=0,device_num=0, dc=dc, res=res) #初始化屏幕
 
 
 
